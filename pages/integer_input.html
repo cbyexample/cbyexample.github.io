@@ -1,0 +1,28 @@
+<pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;errno.h&gt;
+
+int main(void)
+{
+    /*
+     * This is the correct way to read an integer value from an input stream in C.
+     */
+    char buffer[100];
+    
+    if (!fgets(buffer, 100, stdin))
+        return 1;
+
+    char *end;
+    errno = 0;
+    long value = strtol(buffer, &amp;end, 10);
+
+    if ((*end &amp;&amp; *end != '\n') || end == buffer)
+        return 1;
+
+    if (errno)
+        return 2;
+
+    return 0;
+}
+</code></pre>
