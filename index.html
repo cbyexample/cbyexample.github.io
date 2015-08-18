@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>C by example</title>
+        <link rel="stylesheet" href="style.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="section" data-src="goes_to">
+                The "goes to" operator
+            </div>
+        </div>
+        <div class="main">
+            <div class="text"></div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            var active = $('.active');
+
+            $('.section').click(function () {
+                active.removeClass('active');
+                active = $(this);
+                active.addClass('active');
+                load();
+            });
+
+            function load() {
+                var name = active.attr('data-src');
+                $.get('/pages/' + name + '.html', function (data) {
+                    $('.main .text').html(data);
+                });
+            }
+
+            load();
+        </script>
+    </body>
+</html>
