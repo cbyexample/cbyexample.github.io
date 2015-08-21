@@ -70,7 +70,7 @@ html, body {
     margin: 1em 0;
 }
 
-code {
+pre {
     font-family: monospace !important;
     background-color: #EAEAEA !important;
 }
