@@ -1,7 +1,5 @@
-<h1>Reading integer input</h1>
-
-<pre><code>
-#include &lt;stdio.h&gt;
+<h1 id="reading-integer-input">Reading integer input</h1>
+<pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;errno.h&gt;
 
@@ -19,12 +17,11 @@ int main(void)
     errno = 0;
     long value = strtol(buffer, &amp;end, 10);
 
-    if ((*end &amp;&amp; *end != '\n') || end == buffer)
+    if ((*end &amp;&amp; *end != &#39;\n&#39;) || end == buffer)
         return 1;
 
     if (errno)
         return 2;
 
     return 0;
-}
-</code></pre>
+}</code></pre>

@@ -21,32 +21,31 @@ html, body {
 .sidebar {
     width: 15vw;
     box-sizing: border-box;
-    border-right: 1px solid #555;
+    border-right: 1px solid #AAA;
     display: flex;
     flex-flow: column;
 }
 
 .section {
-    border-bottom: 1px solid #555;
-    color: #555;
-    font-weight: bold;
+    color: #333;
     font-size: 14pt;
-    font-family: monospace;
-    height: 3em;
+    font-family: 'Bree Serif';
+    padding-top: 1em;
+    padding-bottom: 1em;
     width: 100%;
     text-align: center;
-    line-height: 3em;
     cursor: pointer;
 }
 
 .section.active {
-    background: #E5E5E5;
+    background: #DDD;
+    border-right: 4px solid #3868FE;
 }
 
 .main .text {
     margin: 0 auto;
     margin-top: 2em;
-    background: #E5E5E5;
+    background: #DDD;
     border-radius: 3px;
     padding: 2em;
     width: 900px;
@@ -61,7 +60,7 @@ html, body {
 }
 
 .main .text p {
-    font-family: Lato;
+    font-family: 'Open Sans';
     font-size: 12pt;
     color: #333;
     margin: 1em 0;

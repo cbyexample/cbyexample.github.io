@@ -1,0 +1,23 @@
+<h1 id="strings">Strings</h1>
+<p><strong>In C, a <em>string</em> is a sequence of characters terminated by and including a null character</strong>.</p>
+<p>Here, &quot;sequence&quot; means that the characters in a string are adjacent in memory.</p>
+<p>Here are a few examples of possible strings in C:</p>
+<pre><code>&#39;a&#39; &#39;b&#39; &#39;c&#39; &#39;d&#39; &#39;\0&#39;
+
+&#39;h&#39; &#39;e&#39; &#39;l&#39; &#39;l&#39; &#39;o&#39; &#39; &#39; &#39;w&#39; &#39;o&#39; &#39;r&#39; &#39;l&#39; &#39;d&#39; &#39;\0&#39;
+
+&#39;\0&#39;</code></pre>
+<p><em>String literals</em> in C, are a convenient way of creating read-only, statically allocated strings that you can use in your program.</p>
+<p>Here is an example of a <em>string literal</em>:</p>
+<p><code>&quot;Hello, world!&quot;</code></p>
+<p>This string literal corresponds to the following string:</p>
+<p><code>'H' 'e' 'l' 'l' 'o' ',' ' ' 'W' 'o' 'r' 'l' 'd' '!' '\0'</code></p>
+<p>Here is how you may use string literals in your C programs:</p>
+<pre><code>char *s = &quot;Foo&quot;; // s points to the read-only string &#39;F&#39; &#39;o&#39; &#39;o&#39; &#39;\0&#39;
+char buf[] = &quot;Bar&quot;; // buf contains the string &#39;B&#39; &#39;a&#39; &#39;r&#39; &#39;\0&#39;
+
+s[1] = &#39;B&#39;; // undefined behavior - bad!
+buf[1] = &#39;F&#39;; // this is fine
+
+puts(&quot;Baz&quot;);</code></pre>
+<p>In this example, <code>char *s = &quot;Foo&quot;;</code> declares <code>s</code> as a pointer to <code>char</code>, and initializes it with the address of a read-only string with static storage duration. <code>char buf[] = &quot;Bar&quot;;</code> on the other hand actually creates an array with automatic storage duration and initializes it with the string <code>'B' 'a' 'r' '\0'</code>. This means that you are free to modify it. String literals have the type <code>char[N]</code>, where <code>N</code> is the number of bytes in the string (including the null character).</p>
