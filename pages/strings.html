@@ -2,22 +2,31 @@
 <p><strong>In C, a <em>string</em> is a sequence of characters terminated by and including a null character</strong>.</p>
 <p>Here, &quot;sequence&quot; means that the characters in a string are adjacent in memory.</p>
 <p>Here are a few examples of possible strings in C:</p>
-<pre><code>&#39;a&#39; &#39;b&#39; &#39;c&#39; &#39;d&#39; &#39;\0&#39;
+<pre><code>[a] [b] [c] [d] [\0]
 
-&#39;h&#39; &#39;e&#39; &#39;l&#39; &#39;l&#39; &#39;o&#39; &#39; &#39; &#39;w&#39; &#39;o&#39; &#39;r&#39; &#39;l&#39; &#39;d&#39; &#39;\0&#39;
+[h] [e] [l] [l] [o] [ ] [w] [o] [r] [l] [d] [\0]
 
-&#39;\0&#39;</code></pre>
+[\0]</code></pre>
 <p><em>String literals</em> in C, are a convenient way of creating read-only, statically allocated strings that you can use in your program.</p>
 <p>Here is an example of a <em>string literal</em>:</p>
-<p><code>&quot;Hello, world!&quot;</code></p>
+<pre><code>&quot;Hello, world!&quot;</code></pre>
 <p>This string literal corresponds to the following string:</p>
-<p><code>'H' 'e' 'l' 'l' 'o' ',' ' ' 'W' 'o' 'r' 'l' 'd' '!' '\0'</code></p>
+<pre><code>[H] [e] [l] [l] [o] [,] [] [W] [o] [r] [l] [d] [!] [\0]</code></pre>
 <p>Here is how you may use string literals in your C programs:</p>
-<pre><code>char *s = &quot;Foo&quot;; // s points to the read-only string &#39;F&#39; &#39;o&#39; &#39;o&#39; &#39;\0&#39;
-char buf[] = &quot;Bar&quot;; // buf contains the string &#39;B&#39; &#39;a&#39; &#39;r&#39; &#39;\0&#39;
+<pre><code>char *s = &quot;Foo&quot;; // s points to the beginning of the read-only string F o o \0
+char buf[] = &quot;Bar&quot;; // buf contains the string B a r \0
 
 s[1] = &#39;B&#39;; // undefined behavior - bad!
 buf[1] = &#39;F&#39;; // this is fine
 
 puts(&quot;Baz&quot;);</code></pre>
-<p>In this example, <code>char *s = &quot;Foo&quot;;</code> declares <code>s</code> as a pointer to <code>char</code>, and initializes it with the address of a read-only string with static storage duration. <code>char buf[] = &quot;Bar&quot;;</code> on the other hand actually creates an array with automatic storage duration and initializes it with the string <code>'B' 'a' 'r' '\0'</code>. This means that you are free to modify it. String literals have the type <code>char[N]</code>, where <code>N</code> is the number of bytes in the string (including the null character).</p>
+<p>In this example, <code>char *s = &quot;Foo&quot;;</code> declares <code>s</code> as a pointer to <code>char</code>, and initializes it with the address of a the first character in a read-only string with static storage duration. <code>char buf[] = &quot;Bar&quot;;</code> on the other hand allocates an array with automatic storage duration and initializes it with the string <code>[B] [a] [r] [\0]</code>. This means that you are free to modify it.</p>
+<p>String literals have the type <code>char[N]</code>, where <code>N</code> is the number of bytes in the string (including the null character).</p>
+<p>Note that any non-empty suffix of a string is itself a string, for example:</p>
+<pre><code>char *s1 = &quot;abcd&quot;;
+char *s2 = s1 + 1;
+char *s3 = s1 + 2;
+char *s4 = s1 + 3;
+char *s5 = s1 + 4;
+char *s6 = s1 + 5;</code></pre>
+<p>Here, <code>s1, s2, s3, s4</code>, and <code>s5</code> all point to the beginning of valid strings. <code>s6</code> does not, but it is still a valid pointer.</p>

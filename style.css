@@ -20,6 +20,7 @@ html, body {
 
 .main {
     width: 85vw;
+    overflow: scroll;
 }
 
 .sidebar {
@@ -67,4 +68,9 @@ html, body {
     font-size: 12pt;
     color: #333;
     margin: 1em 0;
+}
+
+code {
+    font-family: monospace !important;
+    background-color: #EAEAEA !important;
 }
