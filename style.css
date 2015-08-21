@@ -44,6 +44,7 @@ html, body {
 .section.active {
     background: #DDD;
     border-right: 4px solid #3868FE;
+    padding-right: calc(1em - 4px);
 }
 
 .main .text {
@@ -71,6 +72,8 @@ html, body {
 }
 
 pre {
+    padding: 0.4em;
+    border-radius: 3px;
     font-family: monospace !important;
     background-color: #EAEAEA !important;
 }
