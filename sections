@@ -1,0 +1,15 @@
+<a href="pages/goes_to.html">
+    <div class="section" data-src="goes_to">
+        The "goes to" operator
+    </div>
+</a>
+<a href="pages/integer_input.html">
+    <div class="section" data-src="integer_input">
+        Reading integer input from the user
+    </div>
+</a>
+<a href="pages/strings.html">
+    <div class="section" data-src="strings">
+        Strings
+    </div>
+</a>

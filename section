@@ -1,0 +1,14 @@
+#!/bin/sh
+
+read -p 'Section Name: ' name
+read -p 'File: ' file
+
+cat >> sections <<EOF
+<a href="/pages/$file.html">
+    <div class="section" data-src="$file">
+        $name
+    </div>
+</a>
+EOF
+
+$EDITOR "mdpages/${file}.md" < /dev/tty

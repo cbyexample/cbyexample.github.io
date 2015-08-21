@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>C by example</title>
+        <link rel="stylesheet" href="style.css">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans|Bree+Serif' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div class="sidebar">
+            <a href="pages/hello_world.html">
+                <div class="section active" data-src="hello_world">
+                    Hello, world!
+                </div>
+            </a>
+            SECTIONS
+        </div>
+        <div class="main">
+            <div class="text"></div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            $('a').removeAttr('href');
+
+            var active = $('.active');
+
+            $('.section').click(function () {
+                active.removeClass('active');
+                active = $(this);
+                active.addClass('active');
+                load();
+            });
+
+            function load() {
+                var name = active.attr('data-src');
+                $.get('/pages/' + name + '.html', function (data) {
+                    $('.main .text').html(data);
+                });
+            }
+
+            load();
+        </script>
+    </body>
+</html>
