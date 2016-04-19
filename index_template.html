@@ -19,6 +19,9 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script>
+
+            var pages = {};
+
             $('a').removeAttr('href');
 
             var active = $('.active');
@@ -32,9 +35,17 @@
 
             function load() {
                 var name = active.attr('data-src');
-                $.get('/pages/' + name + '.html', function (data) {
-                    $('.main .text').html(data);
-                });
+                if (pages[name] !== undefined) {
+                    console.log('Already retrieved: ' + name + '; reloading...');
+                    $('.main .text').html(pages[name]);
+                } else {
+                    console.log('Retrieving: ' + name + '...');
+                    $.get('/pages/' + name + '.html', function (data) {
+                        console.log('Retrieved: ' + name);
+                        pages[name] = data;
+                        load();
+                    });
+                }
             }
 
             load();
