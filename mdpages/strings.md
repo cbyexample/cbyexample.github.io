@@ -2,7 +2,7 @@ Strings
 =======
 
 **In C, a *string* is a sequence of characters terminated by
-and including a null character**.
+and including a null character (`'\0'`)**.
 
 Here, "sequence" means that the characters in a string
 are adjacent in memory.
@@ -17,8 +17,8 @@ Here are a few examples of possible strings in C:
 [\0]
 ```
 
-*String literals* in C, are a convenient way of creating read-only,
-statically allocated strings that you can use in your program.
+*String literals* in C, are a convenient way of creating read-only
+strings with static storage that you can use in your program.
 
 Here is an example of a *string literal*:
 
@@ -29,16 +29,16 @@ Here is an example of a *string literal*:
 This string literal corresponds to the following string:
 
 ```
-[H] [e] [l] [l] [o] [,] [] [W] [o] [r] [l] [d] [!] [\0]
+[H] [e] [l] [l] [o] [,] [ ] [W] [o] [r] [l] [d] [!] [\0]
 ```
 
 Here is how you may use string literals in your C programs:
 
 ```
-char *s = "Foo"; // s points to the beginning of the read-only string F o o \0
-char buf[] = "Bar"; // buf contains the string B a r \0
+char *s = "Foo"; // s points to the beginning of the read-only string [F] [o] [o] [\0]
+char buf[] = "Bar"; // buf contains the string [B] [a] [r] [\0]
 
-s[1] = 'B'; // undefined behavior - bad!
+s[1] = 'B'; // undefined behavior (s points into a read-only string) - bad!
 buf[1] = 'F'; // this is fine
 
 puts("Baz");
@@ -47,9 +47,9 @@ puts("Baz");
 In this example, `char *s = "Foo";` declares `s` as a pointer to `char`, and
 initializes it with the address of a the first character
 in a read-only string with static storage duration.
-`char buf[] = "Bar";` on the other hand allocates an array with automatic storage
+`char buf[] = "Bar";` on the other hand creates an array with automatic storage
 duration and initializes it with the string `[B] [a] [r] [\0]`. This means that you are
-free to modify it.
+free to modify its contents.
 
 String literals have the type `char[N]`, where `N` is the number of bytes in the string (including the null character).
 
