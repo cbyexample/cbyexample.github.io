@@ -23,12 +23,12 @@ Whether or not *goes to* should be used seriously is controversial.
 
 The two arguments against *goes to* are:
 
-    * Because it isn't a *real* operator, it will confuse people who have never encountered it.
+* Because it isn't a *real* operator, it will confuse people who have never encountered it.
 
-    * Syntactically, it's difficult to tell whether `i` takes on values 30 to 1, or 29 to 0.
+* Syntactically, it's difficult to tell whether `i` takes on values 30 to 1, or 29 to 0.
 
 Despite this, I advocate for its use, because:
 
-    * It's fun!
+* It's fun!
 
-    * It's pleasant to look at and easy to read once you're used to it.
+* It's pleasant to look at and easy to read once you're used to it.

@@ -7,31 +7,31 @@ C that is resilient against all of them, one must take some care.
 
 The two things which most commonly cause problems:
 
-    - The input does not resemble an integer (e.g., 'abc' when you are expecting a decimal integer).
+- The input does not resemble an integer (e.g., 'abc' when you are expecting a decimal integer).
 
-    - The integer cannot be represented by the type of the object you're trying to store it in.
+- The integer cannot be represented by the type of the object you're trying to store it in.
 
 A common approach is to use `scanf`. There are two flaws in this approach:
 
-    - `scanf` does not check protect against integer overflow
+- `scanf` does not check protect against integer overflow
 
-    - `scanf` is not very appropriate when you want control over how whitespace is consumed.
+- `scanf` is not very appropriate when you want control over how whitespace is consumed.
 
 The most most robust way to read and parse integers using the standard library
 is to first read the integer in the format you like using functions from `stdio.h`,
 such as `getchar`, or `fgets`, and then use one of:
 
-    - `strtol`
+- `strtol`
 
-    - `strtoll`
+- `strtoll`
 
-    - `strtoul`
+- `strtoul`
 
-    - `strtoull`
+- `strtoull`
 
-    - `strtoimax`
+- `strtoimax`
 
-    - `strtoumax`
+- `strtoumax`
 
 to parse the the input as an integer. Which of these functions you should use
 depends of course on the type that you're using.

@@ -71,6 +71,13 @@ html, body {
     margin: 1em 0;
 }
 
+ul {
+        margin-left: 4em;
+        font-size: 10pt;
+        list-style-type: none;
+        font-family: courier, monospace;
+}
+
 pre {
     padding: 0.4em;
     border-radius: 3px;

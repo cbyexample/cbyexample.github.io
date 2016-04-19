@@ -1,25 +1,24 @@
 <h1 id="reading-integer-input">Reading integer input</h1>
 <p>Reading integers from an input stream is something which is very easy to get wrong. There are a handful of things that can go wrong, and in order to write C that is resilient against all of them, one must take some care.</p>
 <p>The two things which most commonly cause problems:</p>
-<pre><code>- The input does not resemble an integer (e.g., &#39;abc&#39; when you are expecting a decimal integer).
-
-- The integer cannot be represented by the type of the object you&#39;re trying to store it in.</code></pre>
+<ul>
+<li><p>The input does not resemble an integer (e.g., 'abc' when you are expecting a decimal integer).</p></li>
+<li><p>The integer cannot be represented by the type of the object you're trying to store it in.</p></li>
+</ul>
 <p>A common approach is to use <code>scanf</code>. There are two flaws in this approach:</p>
-<pre><code>- `scanf` does not check protect against integer overflow
-
-- `scanf` is not very appropriate when you want control over how whitespace is consumed.</code></pre>
+<ul>
+<li><p><code>scanf</code> does not check protect against integer overflow</p></li>
+<li><p><code>scanf</code> is not very appropriate when you want control over how whitespace is consumed.</p></li>
+</ul>
 <p>The most most robust way to read and parse integers using the standard library is to first read the integer in the format you like using functions from <code>stdio.h</code>, such as <code>getchar</code>, or <code>fgets</code>, and then use one of:</p>
-<pre><code>- `strtol`
-
-- `strtoll`
-
-- `strtoul`
-
-- `strtoull`
-
-- `strtoimax`
-
-- `strtoumax`</code></pre>
+<ul>
+<li><p><code>strtol</code></p></li>
+<li><p><code>strtoll</code></p></li>
+<li><p><code>strtoul</code></p></li>
+<li><p><code>strtoull</code></p></li>
+<li><p><code>strtoimax</code></p></li>
+<li><p><code>strtoumax</code></p></li>
+</ul>
 <p>to parse the the input as an integer. Which of these functions you should use depends of course on the type that you're using.</p>
 <p>Here is a small program demonstrating a reasonable way to read and parse an integer from <code>stdin</code>:</p>
 <pre><code>#include &lt;stdio.h&gt;
